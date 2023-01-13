@@ -4,13 +4,16 @@ const FechaRoter = express.Router();
 let dt = datetime.create();
 
 let {_now} = dt;
+FechaRoter.get("/", async (req, res) => {
+    res.send('Bienvenido al Api')
+})
 
 FechaRoter.get("/what-time", async (req, res) => {
     try {
         return res.status(200).send({
             success: true,
             message: "Ok",
-            data: dt.format('H:M:S')
+            response: dt.format('H:M:S')
         })
     } catch (error) {
         return res.status(500).send({
@@ -25,7 +28,7 @@ FechaRoter.get("/what-date", async (req, res) => {
         return res.status(200).send({
             success: true,
             message: "Ok",
-            data: dt.format('Y-m-S')
+            response: dt.format('Y-m-S')
         })
     } catch (error) {
         return res.status(500).send({
@@ -40,7 +43,7 @@ FechaRoter.get("/what-date-time", async (req, res) => {
         return res.status(200).send({
             success: true,
             message: "Ok",
-            data: _now
+            response: _now
         })
     } catch (error) {
         return res.status(500).send({
